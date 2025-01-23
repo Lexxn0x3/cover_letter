@@ -1,0 +1,102 @@
+\documentclass[a4paper,10pt]{article}
+
+% Packages
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry} % Page margins
+\usepackage{fontspec} % Custom fonts (use XeLaTeX or LuaLaTeX)
+\usepackage{graphicx} % For images
+\usepackage{multicol} % For two-column layout
+\usepackage{xcolor} % For colors
+\usepackage{titlesec} % Custom section titles
+\usepackage{enumitem} % Adjust lists
+\usepackage[hidelinks]{hyperref} % Hyperlinks
+\usepackage{fontawesome5} % For icons
+\usepackage{eso-pic}
+\usepackage[thinlines]{easytable}
+\usepackage[document]{ragged2e}
+%-------------------------------------------------------------------------------------------------------------------------
+%change language here                                                                                                 %---
+\usepackage[german, english]{babel}                                                                                   %---
+%\usepackage[english, german]{babel}
+\newcommand{\strname}{Max Musterman}
+\DeclareRobustCommand{\strdetailA}{\textcolor{white}{\href{http://dv.developer.org}{dv.developer.org }}}
+\DeclareRobustCommand{\strdetailB}{\textcolor{white}{\href{http://cv.developer.org}{cv.developer.org}}}
+\newcommand{\straddress}{Musterstraße 12C}
+\newcommand{\strzip}{8194 Examplevillage}
+\newcommand{\strcountry}{Germany}
+\newcommand{\strphone}{+01 184 9849849}
+\newcommand{\strmail}{me@exampledomain.com}
+\newcommand{\strdob}{01.01.1901 in Examplevillage}
+%-------------------------------------------------------------------------------------------------------------------------
+\definecolor{darkblue}{HTML}{202e4b}                                                                                  
+% Custom Fonts
+\setmainfont{IBM Plex Sans} % Replacing with IBM Plex Sans
+
+% Section Title Styling
+\titleformat{\section}
+  {\fontsize{16}{16}\selectfont\color{darkblue}\fontspec{IBM Plex Sans}\normalfont} % Set font size (12pt) and line height (16pt)
+  {}
+  {0em}
+  {}[\vspace{0.3cm}\titlerule\vspace{0.1cm}]
+
+
+% Custom Colors
+\definecolor{darkblue}{HTML}{2C3E50}
+\definecolor{lightgray}{HTML}{ECF0F1}
+
+% Header
+\newcommand{\header}{
+    \begin{minipage}[t]{0.7\textwidth}
+        \vspace{0.5cm}
+        {\Huge\textcolor{white}{\textbf{\strname}}}
+        \vspace{0.2cm}\\
+        \strdetailA \textbar{} \strdetailB 
+        \vspace{2.4cm}\\
+        \textbf{\fontsize{15}{15}\selectfont\textcolor{white}{\strcoverletter}}\\[0.5em]
+        
+    \end{minipage}
+
+    \vspace{1.5cm}
+}
+
+\newcommand\BackgroundPic{
+    \put(0,0){
+    \parbox[b][\paperheight]{\paperwidth}{%
+    \vfill
+    \centering
+    \includegraphics[width=\paperwidth,height=\paperheight]{header.pdf}
+    \vfill
+    }}}
+
+% Begin Document
+\begin{document}
+\pagestyle{empty}
+
+\iflanguage{english}{\input{strings-en.tex}}{}
+\iflanguage{german}{\input{strings-de.tex}}{}
+
+% Header
+\header
+
+\AddToShipoutPicture*{\BackgroundPic}
+
+\begin{tabular}{clclcl}
+    \faHome & \straddress 
+     & \faMapMarker* & \strcountry 
+     &\faPhone & \strphone\\
+     & \strzip& & & & \\
+     & & & & & \\
+     \faEnvelope[regular] & \href{mailto:\strmail}{\strmail} &
+    \faCalendar*[regular] & \strdob & &
+\end{tabular}
+
+\vspace{1.5cm}
+
+\strgreeting
+\\~\\
+%Begin writing here
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut.
+%------ End writing
+\\~\\
+\strclosing\\
+\strname
+\end{document}
